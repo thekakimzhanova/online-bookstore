@@ -9,12 +9,13 @@ import { map } from 'rxjs/operators';
 })
 export class BookService {
 
-  private baseUrl = "http://localhost:9090/api/v1/books"
+  private baseUrl = "http://localhost:9090/api/v1/books";
 
   constructor(private httpClient: HttpClient) { }
 
-  getBooks(): Observable<Book[]>{
-    return this.httpClient.get<GetResponseBook>(this.baseUrl).pipe(
+  getBooks(theCategoryId: number): Observable<Book[]>{
+    const searchUrl = `${this.baseUrl}/search/categoryId?id=${theCategoryId}`;
+    return this.httpClient.get<GetResponseBook>(searchUrl).pipe(
       map(response => response._embedded.books)
     );
   }
