@@ -25,10 +25,14 @@ body, html{
 }
 
 .wrapper{
-    min-width: 100%;
+    min-height: 100%;
     position: relative;
 }
 
 .content{
     padding-bottom: 100px;
+}
+
+a{
+    cursor: pointer;
 }

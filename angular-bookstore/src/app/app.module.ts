@@ -9,8 +9,12 @@ import { BookService } from './services/book.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BookCategoryComponent } from './components/book-category/book-category.component';
 import { SearchComponent } from './components/search/search.component';
+import { BooksDetailsComponent } from './components/books-details/books-details.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
+  {path: 'books/:id', component: BooksDetailsComponent},
   {path: 'books', component: BookListComponent},
   {path: 'search/:keyword', component: BookListComponent},
   {path: 'category/:id', component: BookListComponent},
@@ -25,12 +29,16 @@ const routes: Routes = [
     BookListComponent,
     PageNotFoundComponent,
     BookCategoryComponent, 
-    SearchComponent
+    SearchComponent, 
+    BooksDetailsComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    NgbModule,
+    RouterModule.forRoot(routes),
+
   ],
   providers: [
     BookService
